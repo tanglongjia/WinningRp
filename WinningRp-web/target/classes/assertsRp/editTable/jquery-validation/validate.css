@@ -1,0 +1,12 @@
+/**
+ * Created by 项鸿铭 on 2016/11/3.
+ */
+.winning_unchecked {
+    background: url("./images/unchecked.gif") no-repeat 0px 0px;
+    padding-left: 16px;
+}
+
+.winning_checked {
+    background: url("./images/checked.gif") no-repeat 0px 0px;
+    padding-left: 16px;
+}

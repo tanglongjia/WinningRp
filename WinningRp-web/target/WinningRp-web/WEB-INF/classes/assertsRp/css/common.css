@@ -1,0 +1,26 @@
+/**
+ * Created by 项鸿铭 on 2016/11/4.
+ */
+#preloader {
+    background: #000000 url(images/preloader.gif) no-repeat 12px 10px;
+    font-size: 10px;
+    height: 40px;
+    left: 50%;
+    line-height: 20px;
+    margin: -20px 0 0 -45px;
+    padding: 10px;
+    position: absolute;
+    text-align: left;
+    text-indent: 36px;
+    top: 50%;
+    width: 130px;
+    z-index: 9999;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    color: #FFF;
+    text-shadow: none;
+    display: none;
+}

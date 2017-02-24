@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>印章</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+    <meta name="generator" content="www.leipi.org" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-ie6.css">
+    <![endif]-->
+    <!--[if lte IE 7]>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/ie.css">
+    <![endif]-->
+    <link rel="stylesheet" href="leipi.style.css">
+    <script type="text/javascript" src="../dialogs/internal.js"></script>
+    <script type="text/javascript">
+function createElement(type, name)
+{     
+    var element = null;     
+    try {        
+        element = document.createElement('<'+type+' name="'+name+'">');     
+    } catch (e) {}   
+    if(element==null) {     
+        element = document.createElement(type);     
+        element.name = name;     
+    } 
+    return element;     
+}
+    </script>
+</head>
+<body>
+<div class="content">
+    <table class="table table-bordered table-striped table-hover">
+    <tr>
+        <th><span>控件名称</span><span class="label label-important">*</span></th>
+        <th><span></span></th>
+    </tr>
+    <tr>
+        <td>
+            <input id="orgname" type="text" placeholder="必填项"/>
+        </td>
+        <td>
+          
+        </td>
+    </tr>
+    <tr>
+        <th colspan="2"><span>定位</span></th>
+    </tr>
+    <tr>
+        <td colspan="2">
+	            上<input id="orgtop" type="text" value="" class="input-small span1" placeholder=""/>px
+	            下<input id="orgbottom" type="text" value="10" class="input-small span1" placeholder=""/>px
+	            左<input id="orgleft" type="text"  value="" class="input-small span1" placeholder=""/> px
+	            右<input id="orgright" type="text"  value="10" class="input-small span1" placeholder=""/> px
+        </td>
+    </tr>
+    <tr>
+        <th colspan="2">印章选择</th>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <label><input type="radio" value="images/sign.gif" name="orgseaimg" checked /></label>
+            <img src="images/sign.gif" />
+        </td>
+    </tr>
+    </table>
+</div>
+<script type="text/javascript">
+var oNode = null,thePlugins = 'seal';
+window.onload = function() {
+    if( UE.plugins[thePlugins].editdom ){
+        oNode = UE.plugins[thePlugins].editdom;
+       // var gValue = oNode.getAttribute('orgvalue').replace(/&quot;/g,"\""),
+        var gTitle=oNode.getAttribute('title').replace(/&quot;/g,"\""),
+        gSeaimg=oNode.getAttribute('orgseaimg'),
+        gTop=oNode.getAttribute('orgtop'),
+        gBottom=oNode.getAttribute('orgbottom'),
+        gLeft=oNode.getAttribute('orgleft'),
+        gRight=oNode.getAttribute('orgright');
+        //gValue = gValue==null ? '' : gValue;
+        gTitle = gTitle==null ? '' : gTitle;
+        //$G('orgvalue').value = gValue;
+        $G('orgname').value = gTitle;
+        $G('orgtop').value = gTop;
+        $G('orgbottom').value = gBottom;
+        $G('orgleft').value = gLeft;
+        $G('orgright').value = gRight;
+        
+        for ( var i = 0; i < document.getElementsByName('orgseaimg').length;i++) {
+            if (document.getElementsByName('orgseaimg')[i].value == gSeaimg){
+                document.getElementsByName('orgseaimg')[i].checked = true;
+                break;
+            }
+        }
+    }
+}
+dialog.oncancel = function () {
+    if( UE.plugins[thePlugins].editdom ) {
+        delete UE.plugins[thePlugins].editdom;
+    }
+};
+dialog.onok = function (){
+    
+    if( $G('orgname').value == '') {
+        alert('控件名称不能为空');
+        $G('orgname').focus();
+        return false;
+    }
+    //var gValue=$G('orgvalue').value.replace(/\"/g,"&quot;"),
+    var gTitle=$G('orgname').value.replace(/\"/g,"&quot;"),gSeaimg='',
+    gTop = $G('orgtop').value,
+    gBottom = $G('orgbottom').value,
+    gLeft = $G('orgleft').value  ,
+    gRight = $G('orgright').value ;
+    for ( var i = 0;i < document.getElementsByName('orgseaimg').length; i ++) {
+        if (document.getElementsByName('orgseaimg')[i].checked){
+            gSeaimg = document.getElementsByName('orgseaimg')[i].value;
+            break;
+        }
+    }
+    
+    if( !oNode ) {
+        try {
+            oNode = createElement('img','leipiNewField');
+            oNode.setAttribute('title',gTitle);
+            oNode.setAttribute('name','leipiNewField');
+            oNode.setAttribute('leipiPlugins',thePlugins );
+            //oNode.setAttribute('orgvalue',orgvalue);
+            oNode.setAttribute('orgseaimg',gSeaimg);
+            oNode.style='';
+            oNode.style.position = 'absolute';
+            if( gTop != '' ) {
+	            oNode.style.top = gTop + 'px';
+	        }
+	        if( gBottom != '' ) {
+	            oNode.style.bottom = gBottom + 'px';
+	        }
+	        if( gLeft != '' ) {
+	            oNode.style.left = gLeft + 'px';
+	        }
+	        if( gRight != '' ) {
+	            oNode.style.right = gRight + 'px';
+	        }
+	        oNode.setAttribute('orgtop',gTop );
+	        oNode.setAttribute('orgbottom',gBottom );
+	        oNode.setAttribute('orgleft',gLeft );
+	        oNode.setAttribute('orgright',gRight );
+            oNode.setAttribute('src',editor.options.UEDITOR_HOME_URL + UE.leipiFormDesignUrl+'/'+gSeaimg);
+            editor.execCommand('insertHtml',oNode.outerHTML);
+            return true ;
+        } catch ( e ) {
+            try {
+                editor.execCommand('error');
+            } catch ( e ) {
+                alert('控件异常');
+            }
+            return false;
+        }
+    } else {
+        oNode.setAttribute('orgseaimg',gSeaimg);
+        oNode.setAttribute('title',gTitle);
+        oNode.style='';
+        oNode.style.position = 'absolute';
+        if( gTop != '' ) {
+            oNode.style.top = gTop + 'px';
+        }
+        if( gBottom != '' ) {
+            oNode.style.bottom = gBottom + 'px';
+        }
+        if( gLeft != '' ) {
+            oNode.style.left = gLeft + 'px';
+        }
+        if( gRight != '' ) {
+            oNode.style.right = gRight + 'px';
+        }
+        oNode.setAttribute('orgtop',gTop );
+        oNode.setAttribute('orgbottom',gBottom );
+        oNode.setAttribute('orgleft',gLeft );
+        oNode.setAttribute('orgright',gRight );
+        delete UE.plugins[thePlugins].editdom;
+        return true;
+    }
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+USE [PT_STORE_YYPT_LC_0718]
+GO
+
+/****** Object:  Table [dbo].[DIM_BGSZ_BGGJL]    Script Date: 02/24/2017 13:53:30 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[DIM_BGSZ_BGGJL](
+	[BGDM] [varchar](36) NOT NULL,
+	[ANDM] [varchar](10) NOT NULL,
+	[ANMC] [varchar](20) NOT NULL,
+	[ANFF] [varchar](50) NOT NULL
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+

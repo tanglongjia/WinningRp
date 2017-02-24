@@ -1,0 +1,7 @@
+com\winningRp\controller\BaseController.class
+com\winningRp\controller\ErrorController.class
+com\winningRp\controller\Test2.class
+com\winningRp\controller\ViewReportController.class
+com\winningRp\controller\VRController.class
+com\winningRp\controller\AbstractController.class
+com\winningRp\controller\BgpzController.class

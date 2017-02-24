@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/WinningRp.iml" filepath="$PROJECT_DIR$/WinningRp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WinningRp-common/WinningRp-common.iml" filepath="$PROJECT_DIR$/WinningRp-common/WinningRp-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WinningRp-controller/WinningRp-controller.iml" filepath="$PROJECT_DIR$/WinningRp-controller/WinningRp-controller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WinningRp-dao/WinningRp-dao.iml" filepath="$PROJECT_DIR$/WinningRp-dao/WinningRp-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WinningRp-service/WinningRp-service.iml" filepath="$PROJECT_DIR$/WinningRp-service/WinningRp-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WinningRp-web/WinningRp-web.iml" filepath="$PROJECT_DIR$/WinningRp-web/WinningRp-web.iml" />
+    </modules>
+  </component>
+</project>
